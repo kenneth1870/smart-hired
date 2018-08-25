@@ -1,0 +1,18 @@
+<h2>Log in</h2>
+<div class="row">
+  <div class="contact-form col-12 col-md-6">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-group">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Your email" %>
+    </div>
+    <div class="form-group">
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Your password"%>
+    </div>
+    <br>
+    <div id="cf-submit">
+      <%= f.submit "Sign up", class: "btn btn-transparent", id:"contact-submit" %>
+    </div>
+  <% end %>
+</div>
+</div>
+<%= render "devise/shared/links" %>
