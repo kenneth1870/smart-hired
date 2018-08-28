@@ -26,7 +26,7 @@ gem "pundit"
 gem 'carrierwave'
 gem "cocoon"
 gem 'ratyrate'
-gem 'puma' "~> 3.11"
+gem 'puma', "~> 3.11"
 
 
 group :production, :staging do
