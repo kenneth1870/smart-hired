@@ -22,6 +22,11 @@ gem "sass-rails", "~> 5.0"
 gem "sidekiq", ">= 4.2.0"
 gem "turbolinks", "~> 5"
 gem 'devise'
+gem "pundit"
+gem 'carrierwave'
+gem "cocoon"
+gem 'ratyrate'
+
 
 group :production, :staging do
   gem "postmark-rails"
@@ -30,6 +35,7 @@ group :production, :staging do
 end
 
 group :development do
+  gem 'pry-rails'
   gem "annotate", ">= 2.5.0"
   gem "awesome_print"
   gem "bcrypt_pbkdf", require: false

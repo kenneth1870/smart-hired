@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: addresses
+#
+#  city                :string
+#  created_at          :datetime         not null
+#  id                  :integer          not null, primary key
+#  latitude            :decimal(15, 10)
+#  longitude           :decimal(15, 10)
+#  original_attributes :text
+#  state               :string
+#  street              :string
+#  street2             :string
+#  updated_at          :datetime         not null
+#  verification_info   :text
+#  zip_code            :string
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

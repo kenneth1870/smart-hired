@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-lg-3">
+    <%= bootstrap_form_for(@profile) do |f| %>
+    <%= f.alert_message "Please review the problems below:" %>
+    <fieldset class="fieldset">
+      <legend>Personal Information</legend>
+      <%= f.text_field :first_name %>
+      <%= f.text_field :last_name %>
+      <%= f.file_field :portfolio %> <%= link_to "Download Resume", @profile&.portfolio_url, target: "_blank" if @profile.portfolio.present? %>
+      <%= f.file_field :resume %> <%= link_to "Download Resume", @profile&.resume_url, target: "_blank" if @profile.resume.present? %>
+      <%= f.select :grade_level, ["School", "High", "College"],{ promot: "Grade Level?"}, {class: "form-control"}%>
+    </fieldset>
+  </div>
+  <div class="col-lg-3">
+    <fieldset class="fieldset">
+      <legend>Contact Information</legend>
+      <%= f.fields_for :address, @profile.address do |af| %>
+      <%= af.label :street do %>
+      Address
+      <%= af.text_field :street, required: true %>
+      <% end %>
+
+      <%= af.label :street2 do %>
+      Unit
+      <%= af.text_field :street2 %>
+      <% end %>
+
+      <%= af.label :city do %>
+      City
+      <%= af.text_field :city, required: true %>
+      <% end %>
+      <%= af.label :state do %>
+      State
+      <%= af.text_field :state, required: true %>
+      <% end %>
+
+      <%= af.label :zip_code do %>
+      Zip Code
+      <%= af.text_field :zip_code, required: true %>
+      <% end %>
+      <% end %>
+    </fieldset>
+  </div>
+  <% unless current_user.recruiter? %>
+    <div class="col-lg-6">
+      <fieldset>
+        <legend>Technology skills</legend>
+        <div class="row">
+          <div class="form-group">
+            <%= f.fields_for  :skills do |skill| %>
+            <%= render  'skill_fields', f: skill %>
+            <% end %>
+            <%= link_to_add_association 'Add Skill', f, :skills %>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+  <%= f.primary %>
+  <%= link_to "Back", profiles_path, class: "btn btn-link" %>
+</div>
+</div>
+<% end %>

@@ -1,0 +1,17 @@
+<%= bootstrap_form_for(@project) do |f| %>
+
+  <%= f.alert_message "Please review the problems below:" %>
+
+  <%= f.text_field :name %>
+  <%= f.text_field :cliente %>
+  <%= f.text_field :buget %>
+  <%= f.datetime_select :start_date %>
+  <%= f.datetime_select :end_date %>
+  <%= f.text_area :description, rows: 5 %>
+  <%= f.text_field :skills_needed, placeholder: "Separed by ," %>
+  <%= f.collection_select :candidate_id, User.candidates, :id, :full_name, :prompt => true %>
+
+  <%= f.primary %>
+  <%= link_to "Back", projects_path, class: "btn btn-link" %>
+
+<% end %>

@@ -37,8 +37,16 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to('LogIn', new_user_session_path)%></li>
-        <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+        <% if current_user %>
+          <li><%= link_to "My profile", edit_profile_path(current_user.profile) %></li>
+          <% if current_user.recruiter? || current_user.admin? %>
+          <li><%= link_to "Projects", projects_path %></li>
+          <% end  %>
+
+          <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to('LogIn', new_user_session_path)%></li>
+        <% end %>
       </ul>
     </div>
     <!--/.nav-collapse -->

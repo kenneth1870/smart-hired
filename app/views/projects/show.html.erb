@@ -1,0 +1,45 @@
+<% provide(:title) do %>
+  Project #<%= @project.id %>
+<% end %>
+
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th class="col-sm-2">Name</th>
+      <td><%= @project.name %></td>
+    </tr>
+    <tr>
+      <th class="col-sm-2">Cliente</th>
+      <td><%= @project.cliente %></td>
+    </tr>
+    <tr>
+      <th class="col-sm-2">Buget</th>
+      <td><%= @project.buget %></td>
+    </tr>
+    <tr>
+      <th class="col-sm-2">Start date</th>
+      <td><%= @project.start_date %></td>
+    </tr>
+    <tr>
+      <th class="col-sm-2">End date</th>
+      <td><%= @project.end_date %></td>
+    </tr>
+    <tr>
+      <th class="col-sm-2">Description</th>
+      <td><%= @project.description %></td>
+    </tr>
+    <tr>
+      <th class="col-sm-2">Skills needed</th>
+      <td><%= @project.skills_needed %></td>
+    </tr>
+    <tr>
+      <th class="col-sm-2">Candidate</th>
+      <td><%= @project.candidate_id %></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to "Edit", edit_project_path(@project), class: "btn btn-primary" %>
+  <%= link_to "Back", projects_path, class: "btn btn-link" %>
+</p>

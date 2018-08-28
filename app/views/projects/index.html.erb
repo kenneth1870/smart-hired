@@ -1,0 +1,50 @@
+<% provide(:title, "Listing projects") %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Cliente</th>
+      <th>Buget</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Description</th>
+      <th>Skills needed</th>
+      <th>Candidate</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= project.cliente %></td>
+        <td><%= project.buget %></td>
+        <td><%= project.start_date %></td>
+        <td><%= project.end_date %></td>
+        <td><%= project.description %></td>
+        <td><%= project.skills_needed.map(&:inspect).join("\n")%></td>
+        <td><%= project.candidate.full_name %></td>
+        <td>
+          <div class="btn-group">
+            <%= link_to project, class: "btn btn-xs btn-default" do %>
+              <%= fa_icon("eye", text: "Show") %>
+            <% end %>
+            <%= link_to edit_project_path(project), class: "btn btn-xs btn-default" do %>
+              <%= fa_icon("pencil", text: "Edit") %>
+            <% end %>
+            <%= link_to project, class: "btn btn-xs btn-danger", method: :delete, data: { confirm: "Are you sure you want to delete this project?" } do %>
+              <%= fa_icon("trash-o", text: "Destroy") %>
+            <% end %>
+          </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to new_project_path, class: "btn btn-default" do %>
+  <%= fa_icon("plus", text: "New Project") %>
+<% end %>

@@ -24,20 +24,37 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable
+  ratyrate_rater
+
+  after_create :set_profile
+  has_one :profile
+
+  delegate :full_name, to: :profile
+
+  scope :candidates, -> { where("'Candidate' = ANY (roles)") }
+
   enum status: {
     active: 0,
     inactive: 1
   }
 
   def candidate?
-    roles.include? "candidate"
+    roles.include? "Candidate"
   end
 
   def recruiter?
-    roles.include? "recruiter"
+    roles.include? "Recruiter"
   end
 
   def admin?
-    roles.include? "admin"
+    roles.include? "Admin"
+  end
+
+  private
+
+  def set_profile
+    address = Address.new
+    address.save!
+    Profile.create!(user: self, address: address)
   end
 end

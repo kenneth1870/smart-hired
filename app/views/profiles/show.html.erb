@@ -1,0 +1,13 @@
+<% provide(:title) do %>
+  Profile #<%= @profile.id %>
+<% end %>
+
+<table class="table table-bordered">
+  <tbody>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to "Edit", edit_profile_path(@profile), class: "btn btn-primary" %>
+  <%= link_to "Back", profiles_path, class: "btn btn-link" %>
+</p>

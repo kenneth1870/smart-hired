@@ -1,0 +1,41 @@
+# == Schema Information
+#
+# Table name: profiles
+#
+#  address_id  :bigint(8)
+#  created_at  :datetime         not null
+#  first_name  :string
+#  grade_level :string
+#  id          :bigint(8)        not null, primary key
+#  last_name   :string
+#  portfolio   :string
+#  resume      :string
+#  updated_at  :datetime         not null
+#  user_id     :bigint(8)
+#
+# Indexes
+#
+#  index_profiles_on_address_id  (address_id)
+#  index_profiles_on_user_id     (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (address_id => addresses.id) ON DELETE => nullify
+#  fk_rails_...  (user_id => users.id) ON DELETE => cascade
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  resume: MyString
+  portfolio: MyString
+  user: one
+
+two:
+  first_name: MyString
+  last_name: MyString
+  resume: MyString
+  portfolio: MyString
+  user: two
