@@ -26,6 +26,7 @@ gem "pundit"
 gem 'carrierwave'
 gem "cocoon"
 gem 'ratyrate'
+gem 'puma'
 
 
 group :production, :staging do
